@@ -1,0 +1,153 @@
+{
+  "profile": {
+    "enabled": true,
+    "fullName": "Armando Jesus",
+    "headline": "Computer Science Student",
+    "email": "armando.jesus@example.com",
+    "phone": "+1-787-000-0000",
+    "location": "Puerto Rico"
+  },
+  "summary": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "text": "Student focused on building practical web tools and academic productivity apps."
+      },
+      {
+        "enabled": true,
+        "text": "Interested in web development, software design, and programming language paradigms."
+      }
+    ]
+  },
+  "education": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "institution": "University of Puerto Rico",
+        "degree": "BS in Computer Science",
+        "years": "2022-2026"
+      },
+      {
+        "enabled": true,
+        "institution": "Colegio Example",
+        "degree": "High School Diploma",
+        "years": "2018-2022"
+      }
+    ]
+  },
+  "experience": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "role": "Peer Tutor",
+        "organization": "CS Study Group",
+        "years": "2024-2025"
+      },
+      {
+        "enabled": true,
+        "role": "Lab Assistant",
+        "organization": "Programming Lab",
+        "years": "2025-Present"
+      }
+    ]
+  },
+  "projects": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "name": "Smart Academic Task Planner",
+        "tech": "HTML, CSS, JavaScript, Python",
+        "year": "2026"
+      },
+      {
+        "enabled": true,
+        "name": "Course Schedule Helper",
+        "tech": "Java",
+        "year": "2025"
+      }
+    ]
+  },
+  "skills": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "name": "JavaScript",
+        "level": "Intermediate"
+      },
+      {
+        "enabled": true,
+        "name": "Python",
+        "level": "Intermediate"
+      },
+      {
+        "enabled": true,
+        "name": "Java",
+        "level": "Beginner-Intermediate"
+      }
+    ]
+  },
+  "certifications": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "name": "Responsive Web Design",
+        "issuer": "freeCodeCamp",
+        "year": "2025"
+      }
+    ]
+  },
+  "languages": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "name": "Spanish",
+        "level": "Native"
+      },
+      {
+        "enabled": true,
+        "name": "English",
+        "level": "Professional"
+      }
+    ]
+  },
+  "volunteer": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "role": "Math Mentor",
+        "organization": "Community Tutoring",
+        "years": "2023-2024"
+      }
+    ]
+  },
+  "awards": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "title": "Dean's List",
+        "issuer": "UPR",
+        "year": "2024"
+      }
+    ]
+  },
+  "references": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "name": "Prof. Ana Lopez",
+        "relation": "Programming Instructor",
+        "contact": "ana.lopez@upr.edu"
+      }
+    ]
+  }
+}

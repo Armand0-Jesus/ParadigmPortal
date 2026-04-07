@@ -1,0 +1,11 @@
+# Elm build cache
+modules/elm-budget-tracker/elm-stuff/
+
+# Maven build output
+modules/java-task-manager/target/
+modules/java-priority-calculator/target/
+
+# Editor and OS noise
+.vscode/
+.DS_Store
+Thumbs.db
