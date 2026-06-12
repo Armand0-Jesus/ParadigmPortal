@@ -8,12 +8,12 @@ public class PriorityCalculator {
 
     public static String toPriorityLabel(double score) {
         if (score >= 8) {
-            return "ALTA";
+            return "HIGH";
         }
         if (score >= 5) {
-            return "MEDIA";
+            return "MEDIUM";
         }
-        return "BAJA";
+        return "LOW";
     }
 
     public static String calculate(String taskName, int urgency, int difficulty, int daysLeft) {

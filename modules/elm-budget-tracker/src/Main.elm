@@ -55,7 +55,7 @@ initModel =
     , descriptionInput = ""
     , amountInput = ""
     , entries = []
-    , feedback = "Agrega ingresos y gastos para calcular tu balance."
+    , feedback = "Add income and expenses to calculate your balance!"
     , hasError = False
     }
 
@@ -82,7 +82,7 @@ update msg model =
             in
             { model
                 | entries = remaining
-                , feedback = "Entrada eliminada."
+                , feedback = "Entry deleted."
                 , hasError = False
             }
 
@@ -94,16 +94,16 @@ addEntry model =
             String.trim model.descriptionInput
     in
     if cleanDescription == "" then
-        { model | feedback = "Escribe una descripcion.", hasError = True }
+        { model | feedback = "Write a description.", hasError = True }
 
     else
         case String.toFloat model.amountInput of
             Nothing ->
-                { model | feedback = "El monto debe ser numerico.", hasError = True }
+                { model | feedback = "The amount must be numeric.", hasError = True }
 
             Just amount ->
                 if amount <= 0 then
-                    { model | feedback = "El monto debe ser mayor que 0.", hasError = True }
+                    { model | feedback = "The amount must be greater than 0.", hasError = True }
 
                 else
                     let
@@ -119,7 +119,7 @@ addEntry model =
                         , entries = entry :: model.entries
                         , descriptionInput = ""
                         , amountInput = ""
-                        , feedback = "Entrada agregada correctamente."
+                        , feedback = "Entry added successfully."
                         , hasError = False
                     }
 
@@ -137,10 +137,10 @@ kindToLabel : EntryKind -> String
 kindToLabel kind =
     case kind of
         Income ->
-            "Ingreso"
+            "Income"
 
         Expense ->
-            "Gasto"
+            "Expense"
 
 
 sumByKind : EntryKind -> List Entry -> Float
@@ -204,24 +204,24 @@ view model =
     div [ class "elm-budget-app" ]
         [ div [ class "form-grid form-grid-two" ]
             [ label [ class "field" ]
-                [ span [] [ text "Tipo" ]
+                [ span [] [ text "Type" ]
                 , select [ onInput SetKind ]
-                    [ option [ value "income", selected (model.kindInput == Income) ] [ text "Ingreso" ]
-                    , option [ value "expense", selected (model.kindInput == Expense) ] [ text "Gasto" ]
+                    [ option [ value "income", selected (model.kindInput == Income) ] [ text "Income" ]
+                    , option [ value "expense", selected (model.kindInput == Expense) ] [ text "Expense" ]
                     ]
                 ]
             , label [ class "field" ]
-                [ span [] [ text "Descripcion" ]
+                [ span [] [ text "Description" ]
                 , input
                     [ type_ "text"
-                    , placeholder "Ej. Beca o libros"
+                    , placeholder "Ex. Scholarship or books"
                     , value model.descriptionInput
                     , onInput SetDescription
                     ]
                     []
                 ]
             , label [ class "field" ]
-                [ span [] [ text "Monto" ]
+                [ span [] [ text "Amount" ]
                 , input
                     [ type_ "number"
                     , step "0.01"
@@ -232,14 +232,14 @@ view model =
                     []
                 ]
             ]
-        , button [ class "action-btn", onClick AddEntry ] [ text "Agregar entrada" ]
+        , button [ class "action-btn", onClick AddEntry ] [ text "Add entry" ]
         , p [ class (feedbackClass model.hasError) ] [ text model.feedback ]
         , div [ class "elm-summary-grid" ]
-            [ summaryCard "Ingresos" (formatMoney totalIncome)
-            , summaryCard "Gastos" (formatMoney totalExpense)
+            [ summaryCard "Income" (formatMoney totalIncome)
+            , summaryCard "Expenses" (formatMoney totalExpense)
             , summaryCard "Balance" (formatMoney balance)
             ]
-        , h3 [ class "elm-list-title" ] [ text "Entradas" ]
+        , h3 [ class "elm-list-title" ] [ text "Entries" ]
         , viewEntries model.entries
         ]
 
@@ -255,7 +255,7 @@ summaryCard title amount =
 viewEntries : List Entry -> Html Msg
 viewEntries entries =
     if List.isEmpty entries then
-        p [ class "module-help" ] [ text "No hay entradas todavia." ]
+        p [ class "module-help" ] [ text "No entries yet." ]
 
     else
         ul [ class "elm-entry-list" ] (List.map viewEntry entries)
@@ -269,5 +269,5 @@ viewEntry entry =
             , p [ class "elm-entry-meta" ]
                 [ text (kindToLabel entry.kind ++ " | " ++ formatMoney entry.amount) ]
             ]
-        , button [ class "secondary-btn", onClick (RemoveEntry entry.id) ] [ text "Eliminar" ]
+        , button [ class "secondary-btn", onClick (RemoveEntry entry.id) ] [ text "Delete" ]
         ]

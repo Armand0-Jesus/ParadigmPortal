@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Academic Task Planner</title>
+    <title>Smart Simple Manager</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
@@ -11,264 +11,306 @@
   <body>
     <div class="app-shell">
       <header class="site-header">
-        <p class="eyebrow">Programming Languages Midterm Project</p>
-        <h1>Smart Academic Task Planner</h1>
+        <p class="eyebrow">Programming Languages Final Project</p>
+        <h1>Smart Simple Manager</h1>
         <p class="subtitle">
-          Una sola web personal con 7 programas ejecutables, organizada por modulos y paradigmas.
+          A single web page for helping students and other people with common tasks!
         </p>
       </header>
 
-      <nav class="module-nav" aria-label="Navegacion de programas">
-        <button class="nav-btn is-active" data-target="module-python-gpa">1. Python GPA</button>
-        <button class="nav-btn" data-target="module-python-converter">2. Python Conversor</button>
-        <button class="nav-btn" data-target="module-java-task">3. Java Task Manager</button>
-        <button class="nav-btn" data-target="module-java-priority">4. Java Prioridad</button>
-        <button class="nav-btn" data-target="module-prolog">5. Tau Prolog Reglas</button>
-        <button class="nav-btn" data-target="module-elm-budget">6. Elm Budget Tracker</button>
-        <button class="nav-btn" data-target="module-cv">7. CV/Resume Generator</button>
+      <nav class="module-nav" aria-label="Tool navigation">
+        <button
+          class="nav-btn is-active"
+          data-target="module-python-gpa"
+          data-fact="Fun fact: The first famous computer bug was an actual moth found in a relay in 1947."
+        >
+          1. GPA Calculator
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-python-converter"
+          data-fact="Fun fact: Unit tests help catch conversion mistakes before users ever see them."
+        >
+          2. Metric Converter
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-java-task"
+          data-fact="Fun fact: Short task lists reduce context switching and are easier to finish."
+        >
+          3. Task Manager
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-java-priority"
+          data-fact="Fun fact: Priority queues are used by operating systems to decide what runs next."
+        >
+          4. Priority Calculator
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-prolog"
+          data-fact="Fun fact: Rule based systems can explain decisions by tracing which facts matched."
+        >
+          5. Academic Recommender
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-elm-budget"
+          data-fact="Fun fact: Immutable data makes many interface updates easier to reason about."
+        >
+          6. Budget Tracker
+        </button>
+        <button
+          class="nav-btn"
+          data-target="module-cv"
+          data-fact="Fun fact: Structured data can turn the same resume content into HTML or PDF."
+        >
+          7. CV Generator
+        </button>
       </nav>
 
       <main class="modules-grid">
         <section id="module-python-gpa" class="module-panel is-visible" aria-labelledby="python-gpa-title">
-          <h2 id="python-gpa-title">Python - Calculadora de promedio / GPA</h2>
-          <p class="meta">Paradigma: Imperativo | Estado: Funcional minimo</p>
+          <h2 id="python-gpa-title">GPA Calculator</h2>
+          <p class="meta">Built on Python</p>
           <div class="placeholder-box">
             <p class="module-help">
-              Ingresa hasta 8 clases con nota y creditos. La nota puede ser A, B, C, D, F o porcentaje.
+              Enter up to 8 classes and calculate your GPA on a 4.0 scale. Use A-F or 0-100 for grades and credit hours for credits.
             </p>
 
             <div class="form-grid form-grid-two">
               <label id="gpa-grade-field-1" class="field" for="gpa-grade-1">
-                <span>Nota 1 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-1" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-1" class="field" for="gpa-credits-1">
-                <span>Creditos 1</span>
+                <span>Credits</span>
                 <input id="gpa-credits-1" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-2" class="field" for="gpa-grade-2">
-                <span>Nota 2 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-2" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-2" class="field" for="gpa-credits-2">
-                <span>Creditos 2</span>
+                <span>Credits</span>
                 <input id="gpa-credits-2" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-3" class="field" for="gpa-grade-3">
-                <span>Nota 3 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-3" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-3" class="field" for="gpa-credits-3">
-                <span>Creditos 3</span>
+                <span>Credits</span>
                 <input id="gpa-credits-3" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-4" class="field" for="gpa-grade-4">
-                <span>Nota 4 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-4" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-4" class="field" for="gpa-credits-4">
-                <span>Creditos 4</span>
+                <span>Credits</span>
                 <input id="gpa-credits-4" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-5" class="field" for="gpa-grade-5">
-                <span>Nota 5 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-5" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-5" class="field" for="gpa-credits-5">
-                <span>Creditos 5</span>
+                <span>Credits</span>
                 <input id="gpa-credits-5" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-6" class="field" for="gpa-grade-6">
-                <span>Nota 6 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-6" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-6" class="field" for="gpa-credits-6">
-                <span>Creditos 6</span>
+                <span>Credits</span>
                 <input id="gpa-credits-6" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-7" class="field" for="gpa-grade-7">
-                <span>Nota 7 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-7" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-7" class="field" for="gpa-credits-7">
-                <span>Creditos 7</span>
+                <span>Credits</span>
                 <input id="gpa-credits-7" type="number" min="1" step="1" />
               </label>
 
               <label id="gpa-grade-field-8" class="field" for="gpa-grade-8">
-                <span>Nota 8 (A-F o 0-100)</span>
+                <span>Grade</span>
                 <input id="gpa-grade-8" type="text" maxlength="6" />
               </label>
               <label id="gpa-credits-field-8" class="field" for="gpa-credits-8">
-                <span>Creditos 8</span>
+                <span>Credits</span>
                 <input id="gpa-credits-8" type="number" min="1" step="1" />
               </label>
             </div>
 
-            <button id="gpa-calc-btn" class="action-btn" type="button">Calcular GPA</button>
-            <p id="gpa-result" class="result-box" aria-live="polite">Resultado: listo para calcular.</p>
+            <button id="gpa-calc-btn" class="action-btn" type="button">Calculate GPA</button>
+            <p id="gpa-result" class="result-box" aria-live="polite">Ready to calculate!</p>
           </div>
         </section>
 
         <section id="module-python-converter" class="module-panel" aria-labelledby="python-converter-title">
-          <h2 id="python-converter-title">Python - Conversor academico / utilitario</h2>
-          <p class="meta">Paradigma: Imperativo | Estado: Funcional minimo</p>
+          <h2 id="python-converter-title">Metric Converter</h2>
+          <p class="meta">Built on Python</p>
           <div class="placeholder-box">
-            <p class="module-help">Selecciona una conversion, escribe el valor y presiona convertir.</p>
+            <p class="module-help">Choose a conversion, enter a value and press convert (especially good for americans).</p>
 
             <div class="form-grid">
               <label class="field" for="converter-type">
-                <span>Tipo de conversion</span>
+                <span>Conversion type</span>
                 <select id="converter-type">
-                  <option value="fahrenheit_to_celsius">Fahrenheit a Celsius</option>
-                  <option value="pounds_to_kilograms">Libras a kg</option>
-                  <option value="feet_to_meters">Pies a metros</option>
-                  <option value="gallons_to_liters">Galones a litros</option>
+                  <option value="celsius_to_fahrenheit">Celsius to Fahrenheit</option>
+                  <option value="kilograms_to_pounds">Kilograms to Pounds</option>
+                  <option value="meters_to_feet_inches">Meters to Feet</option>
+                  <option value="liters_to_gallons">Liters to Gallons</option>
                 </select>
               </label>
 
               <label class="field" for="converter-input">
-                <span>Valor de entrada</span>
+                <span>Value</span>
                 <input id="converter-input" type="number" step="0.01" />
               </label>
             </div>
 
-            <button id="converter-run-btn" class="action-btn" type="button">Convertir</button>
-            <p id="converter-result" class="result-box" aria-live="polite">Resultado: listo para convertir.</p>
+            <button id="converter-run-btn" class="action-btn" type="button">Convert</button>
+            <p id="converter-result" class="result-box" aria-live="polite">Ready to convert!</p>
           </div>
         </section>
 
         <section id="module-java-task" class="module-panel" aria-labelledby="java-task-title">
-          <h2 id="java-task-title">Java - Task Manager simple</h2>
-          <p class="meta">Paradigma: Orientado a Objetos | Estado: Funcional minimo</p>
+          <h2 id="java-task-title">Task Manager</h2>
+          <p class="meta">Built on Java</p>
           <div class="placeholder-box">
-            <p class="module-help">Agrega tareas y eliminalas cuando ya no las necesites. Se guardan localmente.</p>
+            <p class="module-help">Add tasks and delete them when you finish them or no longer need them.</p>
 
             <div class="form-grid">
               <label class="field" for="java-task-input">
-                <span>Nueva tarea</span>
-                <input id="java-task-input" type="text" maxlength="120" placeholder="Ej. Estudiar calculo" />
+                <span>New task</span>
+                <input id="java-task-input" type="text" maxlength="120" placeholder="Ex. Study calculus" />
               </label>
             </div>
 
-            <button id="java-task-add-btn" class="action-btn" type="button">Agregar tarea</button>
-            <p id="java-task-feedback" class="result-box" aria-live="polite">Estado: listo</p>
+            <button id="java-task-add-btn" class="action-btn" type="button">Add task</button>
+            <p id="java-task-feedback" class="result-box" aria-live="polite">Ready!</p>
 
             <ul id="java-task-list" class="task-list" aria-live="polite"></ul>
           </div>
         </section>
 
         <section id="module-java-priority" class="module-panel" aria-labelledby="java-priority-title">
-          <h2 id="java-priority-title">Java - Calculadora de prioridad de tareas</h2>
-          <p class="meta">Paradigma: Orientado a Objetos | Estado: Funcional minimo</p>
+          <h2 id="java-priority-title">Priority Calculator</h2>
+          <p class="meta">Built on Java</p>
           <div class="placeholder-box">
             <p class="module-help">
-              Ingresa urgencia, dificultad y dias restantes para obtener prioridad sugerida.
+              Enter urgency, difficulty and days left to get a suggested priority.
             </p>
 
             <div class="form-grid form-grid-two">
               <label class="field" for="java-priority-name">
-                <span>Nombre de tarea</span>
-                <input id="java-priority-name" type="text" maxlength="120" placeholder="Ej. Proyecto de programacion" />
+                <span>Task name</span>
+                <input id="java-priority-name" type="text" maxlength="120" placeholder="Ex. Final project" />
               </label>
 
               <label class="field" for="java-priority-days">
-                <span>Dias restantes</span>
+                <span>Days left</span>
                 <input id="java-priority-days" type="number" min="1" max="365" step="1" />
               </label>
 
               <label class="field" for="java-priority-urgency">
-                <span>Urgencia (1-10)</span>
+                <span>Urgency (1-10)</span>
                 <input id="java-priority-urgency" type="number" min="1" max="10" step="1" />
               </label>
 
               <label class="field" for="java-priority-difficulty">
-                <span>Dificultad (1-10)</span>
+                <span>Difficulty (1-10)</span>
                 <input id="java-priority-difficulty" type="number" min="1" max="10" step="1" />
               </label>
             </div>
 
-            <button id="java-priority-run-btn" class="action-btn" type="button">Calcular prioridad</button>
-            <p id="java-priority-result" class="result-box" aria-live="polite">Resultado: listo para calcular.</p>
+            <button id="java-priority-run-btn" class="action-btn" type="button">Calculate priority</button>
+            <p id="java-priority-result" class="result-box" aria-live="polite">Ready to calculate!</p>
           </div>
         </section>
 
         <section id="module-prolog" class="module-panel" aria-labelledby="prolog-title">
-          <h2 id="prolog-title">Tau Prolog - Recomendador basado en reglas</h2>
-          <p class="meta">Paradigma: Logico | Estado: Funcional minimo</p>
+          <h2 id="prolog-title">Academic Recommender</h2>
+          <p class="meta">Built on Prolog</p>
           <div class="placeholder-box">
             <p class="module-help">
-              Marca las condiciones de hoy y genera una recomendacion de estudio basada en reglas.
+              Select today's conditions and generate a study recommendation based on those rules.
             </p>
 
             <div class="prolog-options">
               <label class="prolog-check">
                 <input id="prolog-exam-soon" type="checkbox" />
-                Tengo examen cercano (3 dias o menos)
+                I have an exam soon (3 days or less)
               </label>
 
               <label class="prolog-check">
                 <input id="prolog-deadline-soon" type="checkbox" />
-                Tengo entrega importante cercana (2 dias o menos)
+                I have an important deadline soon (2 days or less)
               </label>
 
               <label class="prolog-check">
                 <input id="prolog-difficult-subject" type="checkbox" />
-                Hay un tema dificil pendiente
+                I still need to practice a difficult topic
               </label>
 
               <label class="prolog-check">
                 <input id="prolog-low-energy" type="checkbox" />
-                Tengo poca energia hoy
+                I have low energy today
               </label>
             </div>
 
-            <button id="prolog-run-btn" class="action-btn" type="button">Recomendar estudio</button>
-            <p id="prolog-result" class="result-box" aria-live="polite">Resultado: listo para analizar.</p>
+            <button id="prolog-run-btn" class="action-btn" type="button">Recommend study plan</button>
+            <p id="prolog-result" class="result-box" aria-live="polite">Ready to analyze!</p>
           </div>
         </section>
 
         <section id="module-elm-budget" class="module-panel" aria-labelledby="elm-title">
-          <h2 id="elm-title">Elm - Budget / Expense Tracker simple</h2>
-          <p class="meta">Paradigma: Funcional | Estado: Funcional minimo</p>
+          <h2 id="elm-title">Budget Tracker</h2>
+          <p class="meta">Built on Elm</p>
           <div class="placeholder-box">
             <p class="module-help">
-              Registra ingresos y gastos para ver tu balance total en tiempo real.
+              Track income and expenses to see your total balance in real time.
             </p>
-            <p id="elm-budget-status" class="result-box" aria-live="polite">Estado: cargando modulo Elm...</p>
+            <p id="elm-budget-status" class="result-box" aria-live="polite">Loading the budget tracker...</p>
             <div id="elm-budget-root" class="elm-budget-root"></div>
           </div>
         </section>
 
         <section id="module-cv" class="module-panel" aria-labelledby="cv-title">
-          <h2 id="cv-title">CV / Resume Generator</h2>
-          <p class="meta">Requisito especial | Estado: Funcional minimo</p>
+          <h2 id="cv-title">Resume Generator</h2>
+          <p class="meta">Built on JavaScript</p>
           <div class="placeholder-box">
             <p class="module-help">
-              Carga <strong>cv.json</strong>, activa o desactiva entradas y descarga tu resume en PDF.
+              Load <strong>cv.json</strong>, toggle entries and download your resume as a PDF.
             </p>
 
             <div class="cv-actions">
-              <button id="cv-reload-btn" class="action-btn" type="button">Recargar cv.json</button>
-              <button id="cv-download-btn" class="secondary-btn" type="button">Descargar PDF</button>
+              <button id="cv-reload-btn" class="action-btn" type="button">Reload cv.json</button>
+              <button id="cv-download-btn" class="secondary-btn" type="button">Download PDF</button>
             </div>
 
-            <p id="cv-feedback" class="result-box" aria-live="polite">Estado: cargando datos...</p>
+            <p id="cv-feedback" class="result-box" aria-live="polite">Loading data...</p>
 
             <div class="cv-grid">
               <section class="cv-panel" aria-labelledby="cv-controls-title">
-                <h3 id="cv-controls-title">Entradas activas</h3>
+                <h3 id="cv-controls-title">Active entries</h3>
                 <div id="cv-controls" class="cv-controls"></div>
               </section>
 
               <section class="cv-panel" aria-labelledby="cv-preview-title">
-                <h3 id="cv-preview-title">Resume en HTML</h3>
+                <h3 id="cv-preview-title">HTML resume</h3>
                 <div id="cv-resume-output" class="cv-resume-output"></div>
               </section>
             </div>
@@ -276,8 +318,8 @@
         </section>
       </main>
 
-      <footer class="site-footer">
-        Estado actual: Modulos integrados en una sola web con implementaciones minimas y funcionales.
+      <footer id="module-fact" class="site-footer" aria-live="polite">
+        Fun fact: The first famous computer bug was an actual moth found in a relay in 1947.
       </footer>
     </div>
 

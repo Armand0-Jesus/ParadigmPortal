@@ -38,8 +38,8 @@ body {
 }
 
 .app-shell {
-  width: min(1100px, 92vw);
-  margin: 2.4rem auto;
+  width: min(1040px, 92vw);
+  margin: 2rem auto;
   position: relative;
   z-index: 1;
 }
@@ -48,7 +48,7 @@ body {
   background: rgba(24, 24, 27, 0.96);
   border: 1px solid var(--panel-border);
   border-radius: 16px;
-  padding: 1.5rem 1.5rem 1.2rem;
+  padding: 1.4rem 1.5rem;
   box-shadow: var(--shadow);
 }
 
@@ -74,9 +74,9 @@ h1 {
 
 .module-nav {
   margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.55rem;
 }
 
 .nav-btn {
@@ -120,7 +120,7 @@ h1 {
   background: rgba(24, 24, 27, 0.97);
   border: 1px solid var(--panel-border);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 1.35rem;
   box-shadow: var(--shadow);
   animation: panel-in 0.22s ease;
 }
@@ -130,13 +130,13 @@ h1 {
 }
 
 .module-panel h2 {
-  margin-top: 0;
+  margin: 0;
   font-size: clamp(1.1rem, 1.6vw, 1.4rem);
   line-height: 1.3;
 }
 
 .meta {
-  margin-top: 0;
+  margin: 0.35rem 0 1rem;
   font-family: var(--mono);
   font-size: 0.82rem;
   color: var(--muted);
@@ -235,6 +235,10 @@ h1 {
   font-family: var(--mono);
   font-size: 0.85rem;
   line-height: 1.55;
+}
+
+.result-box:empty {
+  display: none;
 }
 
 .result-box.is-error {
@@ -493,8 +497,9 @@ h1 {
   background: rgba(24, 24, 27, 0.96);
   border: 1px solid var(--panel-border);
   border-radius: 12px;
-  padding: 0.9rem 1rem;
-  color: var(--muted);
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  font-family: var(--mono);
   font-size: 0.9rem;
   line-height: 1.5;
 }

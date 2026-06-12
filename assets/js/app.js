@@ -1,5 +1,6 @@
 const navButtons = Array.from(document.querySelectorAll(".nav-btn"));
 const modulePanels = Array.from(document.querySelectorAll(".module-panel"));
+const moduleFact = document.querySelector("#module-fact");
 const DEFAULT_MODULE_ID = "module-python-gpa";
 
 function resolveInitialModuleId() {
@@ -35,6 +36,11 @@ function showModule(moduleId) {
   modulePanels.forEach((panel) => {
     panel.classList.toggle("is-visible", panel.id === safeModuleId);
   });
+
+  const activeButton = navButtons.find((button) => button.dataset.target === safeModuleId);
+  if (moduleFact && activeButton?.dataset.fact) {
+    moduleFact.textContent = activeButton.dataset.fact;
+  }
 }
 
 navButtons.forEach((button) => {

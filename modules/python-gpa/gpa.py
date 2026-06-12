@@ -40,7 +40,7 @@ def percentage_to_grade_points(score):
 def calculate_credit_gpa(grades_with_credits):
     total_credits = sum(credits for _, credits in grades_with_credits)
     if total_credits <= 0:
-        raise ValueError("La suma de creditos debe ser mayor que 0.")
+        raise ValueError("The total number of credits must be greater than 0.")
 
     weighted_sum = sum(grade_points * credits for grade_points, credits in grades_with_credits)
     return weighted_sum / total_credits
@@ -48,14 +48,14 @@ def calculate_credit_gpa(grades_with_credits):
 
 def get_document():
     if document is None:
-        raise RuntimeError("PyScript document no esta disponible.")
+        raise RuntimeError("PyScript document is not available.")
     return document
 
 
 def parse_grade_points(raw_text, field_name):
     text = (raw_text or "").strip()
     if text == "":
-        raise ValueError(f"Falta valor en {field_name}.")
+        raise ValueError(f"{field_name} is missing.")
 
     letter = text.upper()
     if letter in LETTER_GRADE_POINTS:
@@ -64,10 +64,10 @@ def parse_grade_points(raw_text, field_name):
     try:
         score = float(text)
     except ValueError as exc:
-        raise ValueError(f"{field_name} debe ser A, B, C, D, F o numerica.") from exc
+        raise ValueError(f"{field_name} must be A, B, C, D, F, or a number.") from exc
 
     if not 0 <= score <= 100:
-        raise ValueError(f"{field_name} debe estar entre 0 y 100 si es numerica.")
+        raise ValueError(f"{field_name} must be between 0 and 100 when entered as a number.")
 
     return percentage_to_grade_points(score)
 
@@ -75,15 +75,15 @@ def parse_grade_points(raw_text, field_name):
 def parse_credits(raw_text, field_name):
     text = (raw_text or "").strip()
     if text == "":
-        raise ValueError(f"Falta valor en {field_name}.")
+        raise ValueError(f"{field_name} is missing.")
 
     try:
         credits = int(text)
     except ValueError as exc:
-        raise ValueError(f"{field_name} debe ser un entero positivo.") from exc
+        raise ValueError(f"{field_name} must be a positive whole number.") from exc
 
     if credits <= 0:
-        raise ValueError(f"{field_name} debe ser mayor que 0.")
+        raise ValueError(f"{field_name} must be greater than 0.")
 
     return credits
 
@@ -99,13 +99,13 @@ def collect_grade_rows():
         if grade_text.strip() == "" and credits_text.strip() == "":
             continue
 
-        grade_points = parse_grade_points(grade_text, f"Nota {idx}")
-        credits = parse_credits(credits_text, f"Creditos {idx}")
+        grade_points = parse_grade_points(grade_text, f"Grade {idx}")
+        credits = parse_credits(credits_text, f"Credits {idx}")
 
         rows.append((grade_points, credits))
 
     if not rows:
-        raise ValueError("Ingresa al menos una clase con nota y creditos.")
+        raise ValueError("Enter at least one class with a grade and credits.")
 
     return rows
 
@@ -121,6 +121,6 @@ def on_calculate_click(_event):
     try:
         rows = collect_grade_rows()
         gpa = calculate_credit_gpa(rows)
-        show_gpa_message(f"GPA final: {gpa:.2f} / 4.00")
+        show_gpa_message(f"Final GPA: {gpa:.2f} / 4.00")
     except (ValueError, RuntimeError) as error:
         show_gpa_message(f"Error: {error}", is_error=True)

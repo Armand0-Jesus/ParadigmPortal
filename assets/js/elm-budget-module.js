@@ -23,7 +23,7 @@ function initElmBudgetModule() {
   const elmGlobal = window.Elm;
   if (!elmGlobal || !elmGlobal.Main || typeof elmGlobal.Main.init !== "function") {
     showElmStatus(
-      "Error: no se encontro elm-budget.js. Compila Elm para activar este modulo.",
+      "Error: elm-budget.js was not found. Build the tracker to activate this tool.",
       true
     );
     return;
@@ -32,9 +32,9 @@ function initElmBudgetModule() {
   try {
     elmGlobal.Main.init({ node: mountNode });
     elmBudgetInitialized = true;
-    showElmStatus("Modulo Elm cargado correctamente.");
+    showElmStatus("");
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Error desconocido al inicializar Elm.";
+    const message = error instanceof Error ? error.message : "Unknown tracker initialization error.";
     showElmStatus(`Error: ${message}`, true);
   }
 }

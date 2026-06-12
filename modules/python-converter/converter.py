@@ -14,57 +14,60 @@ except ImportError:
         return decorator
 
 
-def fahrenheit_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * 5 / 9
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9 / 5) + 32
 
 
-def pounds_to_kilograms(pounds):
-    return pounds * 0.45359237
+def kilograms_to_pounds(kilograms):
+    return kilograms / 0.45359237
 
 
-def feet_to_meters(feet):
-    return feet * 0.3048
+def meters_to_feet_inches(meters):
+    total_feet = meters / 0.3048
+    feet = int(total_feet)
+    inches = round((total_feet - feet) * 12)
+    return f"{feet}.{inches:02d}"
 
 
-def gallons_to_liters(gallons):
-    return gallons * 3.785411784
+def liters_to_gallons(liters):
+    return liters / 3.785411784
 
 
 def get_document():
     if document is None:
-        raise RuntimeError("PyScript document no esta disponible.")
+        raise RuntimeError("PyScript document is not available.")
     return document
 
 
 def parse_input_value():
     raw_value = (get_document().querySelector("#converter-input").value or "").strip()
     if raw_value == "":
-        raise ValueError("Ingresa un valor para convertir.")
+        raise ValueError("Enter a value to convert.")
 
     try:
         return float(raw_value)
     except ValueError as exc:
-        raise ValueError("El valor de entrada debe ser numerico.") from exc
+        raise ValueError("The input value must be numeric.") from exc
 
 
 def convert_selected_value(converter_type, value):
-    if converter_type == "fahrenheit_to_celsius":
-        result = fahrenheit_to_celsius(value)
-        return f"{value:.2f} F son {result:.2f} C."
+    if converter_type == "celsius_to_fahrenheit":
+        result = celsius_to_fahrenheit(value)
+        return f"{value:.2f} C is {result:.2f} F."
 
-    if converter_type == "pounds_to_kilograms":
-        result = pounds_to_kilograms(value)
-        return f"{value:.2f} libras son {result:.2f} kg."
+    if converter_type == "kilograms_to_pounds":
+        result = kilograms_to_pounds(value)
+        return f"{value:.2f} kg is {result:.2f} pounds."
 
-    if converter_type == "feet_to_meters":
-        result = feet_to_meters(value)
-        return f"{value:.2f} pies son {result:.2f} metros."
+    if converter_type == "meters_to_feet_inches":
+        result = meters_to_feet_inches(value)
+        return f"{value:.2f} meters is {result} feet."
 
-    if converter_type == "gallons_to_liters":
-        result = gallons_to_liters(value)
-        return f"{value:.2f} galones son {result:.2f} litros."
+    if converter_type == "liters_to_gallons":
+        result = liters_to_gallons(value)
+        return f"{value:.2f} liters is {result:.2f} gallons."
 
-    raise ValueError("Tipo de conversion no soportado.")
+    raise ValueError("Unsupported conversion type.")
 
 
 def show_converter_message(message, is_error=False):

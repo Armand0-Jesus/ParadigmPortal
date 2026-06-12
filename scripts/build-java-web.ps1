@@ -22,7 +22,7 @@ function Invoke-MavenPackage {
 }
 
 if (-not (Get-Command mvn -ErrorAction SilentlyContinue)) {
-    throw "Maven no esta instalado o no esta disponible en PATH."
+    throw "Maven is not installed or is not available in PATH."
 }
 
 $buildTask = $true
@@ -44,4 +44,4 @@ if ($buildPriority) {
     Invoke-MavenPackage -ModulePath $priorityModulePath
 }
 
-Write-Host "Build Java web finalizado. Revisa assets/generated para los archivos bridge JS." -ForegroundColor Green
+Write-Host "Java web build finished. Check assets/generated for the bridge JS files." -ForegroundColor Green

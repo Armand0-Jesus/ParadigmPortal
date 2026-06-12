@@ -1,16 +1,16 @@
 const CV_DATA_PATH = "data/cv.json";
 
 const SECTION_LABELS = {
-  summary: "Resumen",
-  education: "Educacion",
-  experience: "Experiencia",
-  projects: "Proyectos",
-  skills: "Habilidades",
-  certifications: "Certificaciones",
-  languages: "Idiomas",
-  volunteer: "Voluntariado",
-  awards: "Premios",
-  references: "Referencias",
+  summary: "Summary",
+  education: "Education",
+  experience: "Experience",
+  projects: "Projects",
+  skills: "Skills",
+  certifications: "Certifications",
+  languages: "Communication",
+  volunteer: "Volunteer Work",
+  awards: "Awards",
+  references: "References",
 };
 
 let cvData = null;
@@ -51,7 +51,7 @@ function setCvBusyState(isBusy) {
 async function loadCvData() {
   const response = await fetch(CV_DATA_PATH);
   if (!response.ok) {
-    throw new Error("No se pudo cargar data/cv.json.");
+    throw new Error("Could not load data/cv.json.");
   }
 
   return response.json();
@@ -83,27 +83,27 @@ function getEnabledItems(category) {
 
 function getItemLabel(sectionKey, item, index) {
   if (!item || typeof item !== "object") {
-    return `Entrada ${index + 1}`;
+    return `Entry ${index + 1}`;
   }
 
   if (sectionKey === "summary") {
-    return item.text || `Resumen ${index + 1}`;
+    return item.text || `Summary ${index + 1}`;
   }
 
   if (sectionKey === "education") {
-    const degree = item.degree || "Estudio";
-    const institution = item.institution || "Institucion";
+    const degree = item.degree || "Study";
+    const institution = item.institution || "Institution";
     return `${degree} - ${institution}`;
   }
 
   if (sectionKey === "experience") {
-    const role = item.role || "Rol";
-    const organization = item.organization || "Organizacion";
+    const role = item.role || "Role";
+    const organization = item.organization || "Organization";
     return `${role} - ${organization}`;
   }
 
   if (sectionKey === "projects") {
-    return item.name || `Proyecto ${index + 1}`;
+    return item.name || `Project ${index + 1}`;
   }
 
   if (sectionKey === "skills") {
@@ -111,28 +111,28 @@ function getItemLabel(sectionKey, item, index) {
   }
 
   if (sectionKey === "certifications") {
-    return item.name || `Certificacion ${index + 1}`;
+    return item.name || `Certification ${index + 1}`;
   }
 
   if (sectionKey === "languages") {
-    return item.name || `Idioma ${index + 1}`;
+    return item.name || `Communication item ${index + 1}`;
   }
 
   if (sectionKey === "volunteer") {
-    const role = item.role || "Rol";
-    const organization = item.organization || "Organizacion";
+    const role = item.role || "Role";
+    const organization = item.organization || "Organization";
     return `${role} - ${organization}`;
   }
 
   if (sectionKey === "awards") {
-    return item.title || `Premio ${index + 1}`;
+    return item.title || `Award ${index + 1}`;
   }
 
   if (sectionKey === "references") {
-    return item.name || `Referencia ${index + 1}`;
+    return item.name || `Reference ${index + 1}`;
   }
 
-  return `Entrada ${index + 1}`;
+  return `Entry ${index + 1}`;
 }
 
 function createToggleRow(labelText, checked, onChange) {
@@ -172,7 +172,7 @@ function renderCvControls() {
     title.textContent = toSectionLabel(sectionKey);
     card.appendChild(title);
 
-    const sectionToggle = createToggleRow("Mostrar seccion", isCategoryEnabled(sectionData), (checked) => {
+    const sectionToggle = createToggleRow("Show section", isCategoryEnabled(sectionData), (checked) => {
       sectionData.enabled = checked;
       renderCvResume();
     });
@@ -212,7 +212,7 @@ function appendProfileHeader(container, profile) {
   header.className = "resume-header";
 
   const name = document.createElement("h2");
-  name.textContent = profile.fullName || "Sin nombre";
+  name.textContent = profile.fullName || "No name";
 
   const headline = document.createElement("p");
   headline.className = "resume-headline";
@@ -330,7 +330,7 @@ function renderCvResume() {
 
   if (resume.children.length === 0) {
     const empty = document.createElement("p");
-    empty.textContent = "No hay contenido activo para mostrar en el resume.";
+    empty.textContent = "There is no active resume content to show.";
     resume.appendChild(empty);
   }
 
@@ -343,16 +343,16 @@ async function onReloadCvClick() {
   }
 
   setCvBusyState(true);
-  showCvFeedback("Cargando cv.json...");
+  showCvFeedback("Loading cv.json...");
 
   try {
     const loaded = await loadCvData();
     cvData = cloneJson(loaded);
     renderCvControls();
     renderCvResume();
-    showCvFeedback("CV cargado correctamente.");
+    showCvFeedback("");
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Error al cargar CV.";
+    const message = error instanceof Error ? error.message : "CV loading error.";
     showCvFeedback(`Error: ${message}`, true);
   } finally {
     setCvBusyState(false);
@@ -366,17 +366,17 @@ async function onDownloadPdfClick() {
 
   const resumeNode = getElement("cv-resume-output")?.querySelector(".cv-resume-card");
   if (!resumeNode) {
-    showCvFeedback("Error: no hay resume para exportar.", true);
+    showCvFeedback("Error: there is no resume to export.", true);
     return;
   }
 
   if (typeof window.html2pdf !== "function") {
-    showCvFeedback("Error: la libreria de PDF no esta disponible.", true);
+    showCvFeedback("Error: the PDF library is not available.", true);
     return;
   }
 
   setCvBusyState(true);
-  showCvFeedback("Generando PDF...");
+  showCvFeedback("Generating PDF...");
 
   try {
     await window
@@ -391,9 +391,9 @@ async function onDownloadPdfClick() {
       .from(resumeNode)
       .save();
 
-    showCvFeedback("PDF generado correctamente.");
+    showCvFeedback("PDF generated successfully.");
   } catch (error) {
-    const message = error instanceof Error ? error.message : "No se pudo generar el PDF.";
+    const message = error instanceof Error ? error.message : "Could not generate the PDF.";
     showCvFeedback(`Error: ${message}`, true);
   } finally {
     setCvBusyState(false);

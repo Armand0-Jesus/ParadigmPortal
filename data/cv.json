@@ -16,7 +16,7 @@
       },
       {
         "enabled": true,
-        "text": "Interested in web development, software design and programming language paradigms."
+        "text": "Interested in web development, software design and practical problem solving."
       }
     ]
   },
@@ -49,7 +49,7 @@
       {
         "enabled": true,
         "role": "Lab Assistant",
-        "organization": "Programming Lab",
+        "organization": "Computer Science Lab",
         "years": "2025-Present"
       }
     ]
@@ -60,13 +60,13 @@
       {
         "enabled": true,
         "name": "Smart Academic Task Planner",
-        "tech": "HTML, CSS, JavaScript, Python",
+        "tech": "Frontend tools",
         "year": "2026"
       },
       {
         "enabled": true,
         "name": "Course Schedule Helper",
-        "tech": "Java",
+        "tech": "Planning tools",
         "year": "2025"
       }
     ]
@@ -76,17 +76,17 @@
     "items": [
       {
         "enabled": true,
-        "name": "JavaScript",
+        "name": "Web Development",
         "level": "Intermediate"
       },
       {
         "enabled": true,
-        "name": "Python",
+        "name": "Problem Solving",
         "level": "Intermediate"
       },
       {
         "enabled": true,
-        "name": "Java",
+        "name": "Software Design",
         "level": "Beginner-Intermediate"
       }
     ]
@@ -107,13 +107,13 @@
     "items": [
       {
         "enabled": true,
-        "name": "Spanish",
-        "level": "Native"
+        "name": "Bilingual Communication",
+        "level": "Advanced"
       },
       {
         "enabled": true,
-        "name": "English",
-        "level": "Professional"
+        "name": "Professional Writing",
+        "level": "Intermediate"
       }
     ]
   },
@@ -145,7 +145,7 @@
       {
         "enabled": true,
         "name": "Prof. Ana Lopez",
-        "relation": "Programming Instructor",
+        "relation": "Computer Science Instructor",
         "contact": "ana.lopez@upr.edu"
       }
     ]

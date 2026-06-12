@@ -1,3 +1,3 @@
-# Programming Languages Midterm -
+# Smart Simple Manager
 
 

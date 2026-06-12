@@ -45,8 +45,8 @@ public class Main {
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
 
-        manager.addTask("Estudiar para examen");
-        manager.addTask("Terminar practica");
+        manager.addTask("Study for exam");
+        manager.addTask("Finish practice");
 
         for (Task task : manager.getTasks()) {
             System.out.println(task.getTitle());

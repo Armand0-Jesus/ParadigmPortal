@@ -34,14 +34,14 @@ class JavaPriorityCalculator {
 
   static getPriorityLabel(score) {
     if (score >= 8) {
-      return "ALTA";
+      return "HIGH";
     }
 
     if (score >= 5) {
-      return "MEDIA";
+      return "MEDIUM";
     }
 
-    return "BAJA";
+    return "LOW";
   }
 }
 
@@ -160,7 +160,7 @@ function renderTaskList(manager, listElement) {
   if (manager.tasks.length === 0) {
     const empty = document.createElement("li");
     empty.className = "task-item";
-    empty.textContent = "No hay tareas aun.";
+    empty.textContent = "No tasks yet.";
     listElement.appendChild(empty);
     return;
   }
@@ -184,7 +184,7 @@ function renderTaskList(manager, listElement) {
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.className = "secondary-btn";
-    deleteButton.textContent = "Eliminar";
+    deleteButton.textContent = "Delete";
     deleteButton.dataset.taskId = task.id;
     deleteButton.dataset.action = "delete";
 
@@ -212,7 +212,7 @@ function initJavaTaskModule() {
     const normalizedTitle = normalizeTaskTitle(rawTitle);
 
     if (!canAddTask(rawTitle) || normalizedTitle === "") {
-      showMessage(feedback, "Error: escribe una tarea antes de agregar.", true);
+      showMessage(feedback, "Error: write a task before adding it.", true);
       return;
     }
 
@@ -220,7 +220,7 @@ function initJavaTaskModule() {
     saveStoredTasks(manager.tasks);
     renderTaskList(manager, list);
     input.value = "";
-    showMessage(feedback, "Tarea agregada correctamente.");
+    showMessage(feedback, "Task added successfully.");
   };
 
   addButton.addEventListener("click", addTask);
@@ -247,7 +247,7 @@ function initJavaTaskModule() {
     if (manager.deleteTask(taskId)) {
       saveStoredTasks(manager.tasks);
       renderTaskList(manager, list);
-      showMessage(feedback, "Tarea eliminada.");
+      showMessage(feedback, "Task deleted.");
     }
   });
 
@@ -256,11 +256,11 @@ function initJavaTaskModule() {
 function parseIntegerInRange(value, fieldName, min, max) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed) || !Number.isInteger(parsed)) {
-    throw new Error(`${fieldName} debe ser un numero entero.`);
+    throw new Error(`${fieldName} must be a whole number.`);
   }
 
   if (parsed < min || parsed > max) {
-    throw new Error(`${fieldName} debe estar entre ${min} y ${max}.`);
+    throw new Error(`${fieldName} must be between ${min} and ${max}.`);
   }
 
   return parsed;
@@ -304,17 +304,17 @@ function initJavaPriorityModule() {
 
   runButton.addEventListener("click", () => {
     try {
-      const taskName = nameInput.value.trim() || "(sin nombre)";
-      const daysLeft = parseIntegerInRange(daysInput.value, "Dias restantes", 1, 365);
-      const urgency = parseIntegerInRange(urgencyInput.value, "Urgencia", 1, 10);
-      const difficulty = parseIntegerInRange(difficultyInput.value, "Dificultad", 1, 10);
+      const taskName = nameInput.value.trim() || "(untitled)";
+      const daysLeft = parseIntegerInRange(daysInput.value, "Days left", 1, 365);
+      const urgency = parseIntegerInRange(urgencyInput.value, "Urgency", 1, 10);
+      const difficulty = parseIntegerInRange(difficultyInput.value, "Difficulty", 1, 10);
 
       const score = calculatePriorityScore(urgency, difficulty, daysLeft);
       const priority = resolvePriorityLabel(score);
 
-      showMessage(result, `${taskName}: prioridad ${priority} (score ${score.toFixed(2)})`);
+      showMessage(result, `${taskName}: ${priority} priority (score ${score.toFixed(2)})`);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Valor invalido.";
+      const message = error instanceof Error ? error.message : "Invalid value.";
       showMessage(result, `Error: ${message}`, true);
     }
   });

@@ -1,11 +1,11 @@
 const RULES_PATH = "modules/prolog-recommender/rules.pl";
 
 const RECOMMENDATION_MESSAGES = {
-  study_for_exam: "Prioriza estudiar para el examen hoy.",
-  finish_project_milestone: "Enfocate en adelantar la entrega importante.",
-  practice_hard_topic: "Dedica tiempo a practicar el tema mas dificil.",
-  light_review: "Haz un repaso liviano de notas o resumenes.",
-  plan_and_review: "Organiza tu plan semanal y repasa temas pendientes.",
+  study_for_exam: "Prioritize exam study today.",
+  finish_project_milestone: "Work ahead on the important deadline.",
+  practice_hard_topic: "Spend time practicing the hardest topic.",
+  light_review: "Do a light review of notes or summaries.",
+  plan_and_review: "Organize your weekly plan and review pending topics.",
 };
 
 const OPTIONAL_FACT_PREDICATES = [
@@ -39,7 +39,7 @@ function setRunButtonState(isBusy) {
   }
 
   runButton.disabled = isBusy;
-  runButton.textContent = isBusy ? "Analizando..." : "Recomendar estudio";
+  runButton.textContent = isBusy ? "Analyzing..." : "Recommend study plan";
 }
 
 function hasTauProlog() {
@@ -53,7 +53,7 @@ async function loadRules() {
 
   const response = await fetch(RULES_PATH);
   if (!response.ok) {
-    throw new Error("No se pudo cargar rules.pl.");
+    throw new Error("Could not load rules.pl.");
   }
 
   cachedRules = await response.text();
@@ -109,15 +109,15 @@ function queryBestRecommendation(session) {
             const formatted = session.format_answer(answer);
             const match = formatted.match(/Action\s*=\s*([a-zA-Z0-9_]+)/);
             if (!match) {
-              reject(new Error("No se pudo interpretar la respuesta de Prolog."));
+              reject(new Error("Could not read the Prolog response."));
               return;
             }
 
             resolve(match[1]);
           },
-          fail: () => reject(new Error("No se encontro recomendacion.")),
+          fail: () => reject(new Error("No recommendation was found.")),
           error: (error) => reject(new Error(String(error))),
-          limit: () => reject(new Error("Se alcanzo limite de inferencia en Prolog.")),
+          limit: () => reject(new Error("The Prolog inference limit was reached.")),
         });
       },
       error: (error) => reject(new Error(String(error))),
@@ -132,11 +132,11 @@ async function runRecommendation() {
 
   isRecommendationRunning = true;
   setRunButtonState(true);
-  showPrologResult("Analizando reglas...");
+  showPrologResult("Analyzing rules...");
 
   try {
     if (!hasTauProlog()) {
-      throw new Error("Tau Prolog no esta disponible en la pagina.");
+      throw new Error("The rule engine is not available on this page.");
     }
 
     const rules = await loadRules();
@@ -147,10 +147,10 @@ async function runRecommendation() {
     await consultProgram(session, program);
     const recommendationKey = await queryBestRecommendation(session);
 
-    const message = RECOMMENDATION_MESSAGES[recommendationKey] || `Recomendacion: ${recommendationKey}`;
-    showPrologResult(`Recomendacion final: ${message}`);
+    const message = RECOMMENDATION_MESSAGES[recommendationKey] || `Recommendation: ${recommendationKey}`;
+    showPrologResult(`Final recommendation: ${message}`);
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Error desconocido en Tau Prolog.";
+    const message = error instanceof Error ? error.message : "Unknown rule engine error.";
     showPrologResult(`Error: ${message}`, true);
   } finally {
     isRecommendationRunning = false;

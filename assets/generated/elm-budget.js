@@ -4452,7 +4452,7 @@ var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
 var $elm$core$Basics$False = {$: 'False'};
 var $author$project$Main$Income = {$: 'Income'};
-var $author$project$Main$initModel = {amountInput: '', descriptionInput: '', entries: _List_Nil, feedback: 'Agrega ingresos y gastos para calcular tu balance.', hasError: false, kindInput: $author$project$Main$Income, nextId: 1};
+var $author$project$Main$initModel = {amountInput: '', descriptionInput: '', entries: _List_Nil, feedback: 'Add income and expenses to calculate your balance.', hasError: false, kindInput: $author$project$Main$Income, nextId: 1};
 var $elm$core$Result$Err = function (a) {
 	return {$: 'Err', a: a};
 };
@@ -5189,19 +5189,19 @@ var $author$project$Main$addEntry = function (model) {
 	if (cleanDescription === '') {
 		return _Utils_update(
 			model,
-			{feedback: 'Escribe una descripcion.', hasError: true});
+			{feedback: 'Write a description.', hasError: true});
 	} else {
 		var _v0 = $elm$core$String$toFloat(model.amountInput);
 		if (_v0.$ === 'Nothing') {
 			return _Utils_update(
 				model,
-				{feedback: 'El monto debe ser numerico.', hasError: true});
+				{feedback: 'The amount must be numeric.', hasError: true});
 		} else {
 			var amount = _v0.a;
 			if (amount <= 0) {
 				return _Utils_update(
 					model,
-					{feedback: 'El monto debe ser mayor que 0.', hasError: true});
+					{feedback: 'The amount must be greater than 0.', hasError: true});
 			} else {
 				var entry = {amount: amount, description: cleanDescription, id: model.nextId, kind: model.kindInput};
 				return _Utils_update(
@@ -5210,7 +5210,7 @@ var $author$project$Main$addEntry = function (model) {
 						amountInput: '',
 						descriptionInput: '',
 						entries: A2($elm$core$List$cons, entry, model.entries),
-						feedback: 'Entrada agregada correctamente.',
+						feedback: 'Entry added successfully.',
 						hasError: false,
 						nextId: model.nextId + 1
 					});
@@ -5266,7 +5266,7 @@ var $author$project$Main$update = F2(
 					model.entries);
 				return _Utils_update(
 					model,
-					{entries: remaining, feedback: 'Entrada eliminada.', hasError: false});
+					{entries: remaining, feedback: 'Entry deleted.', hasError: false});
 		}
 	});
 var $author$project$Main$AddEntry = {$: 'AddEntry'};
@@ -5447,9 +5447,9 @@ var $author$project$Main$RemoveEntry = function (a) {
 };
 var $author$project$Main$kindToLabel = function (kind) {
 	if (kind.$ === 'Income') {
-		return 'Ingreso';
+		return 'Income';
 	} else {
-		return 'Gasto';
+		return 'Expense';
 	}
 };
 var $elm$html$Html$li = _VirtualDom_node('li');
@@ -5502,7 +5502,7 @@ var $author$project$Main$viewEntry = function (entry) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Eliminar')
+						$elm$html$Html$text('Delete')
 					]))
 			]));
 };
@@ -5515,7 +5515,7 @@ var $author$project$Main$viewEntries = function (entries) {
 			]),
 		_List_fromArray(
 			[
-				$elm$html$Html$text('No hay entradas todavia.')
+				$elm$html$Html$text('No entries yet.')
 			])) : A2(
 		$elm$html$Html$ul,
 		_List_fromArray(
@@ -5557,7 +5557,7 @@ var $author$project$Main$view = function (model) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Tipo')
+										$elm$html$Html$text('Type')
 									])),
 								A2(
 								$elm$html$Html$select,
@@ -5577,7 +5577,7 @@ var $author$project$Main$view = function (model) {
 											]),
 										_List_fromArray(
 											[
-												$elm$html$Html$text('Ingreso')
+												$elm$html$Html$text('Income')
 											])),
 										A2(
 										$elm$html$Html$option,
@@ -5589,7 +5589,7 @@ var $author$project$Main$view = function (model) {
 											]),
 										_List_fromArray(
 											[
-												$elm$html$Html$text('Gasto')
+												$elm$html$Html$text('Expense')
 											]))
 									]))
 							])),
@@ -5606,14 +5606,14 @@ var $author$project$Main$view = function (model) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Descripcion')
+										$elm$html$Html$text('Description')
 									])),
 								A2(
 								$elm$html$Html$input,
 								_List_fromArray(
 									[
 										$elm$html$Html$Attributes$type_('text'),
-										$elm$html$Html$Attributes$placeholder('Ej. Beca o libros'),
+										$elm$html$Html$Attributes$placeholder('Ex. Scholarship or books'),
 										$elm$html$Html$Attributes$value(model.descriptionInput),
 										$elm$html$Html$Events$onInput($author$project$Main$SetDescription)
 									]),
@@ -5632,7 +5632,7 @@ var $author$project$Main$view = function (model) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Monto')
+										$elm$html$Html$text('Amount')
 									])),
 								A2(
 								$elm$html$Html$input,
@@ -5656,7 +5656,7 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Agregar entrada')
+						$elm$html$Html$text('Add entry')
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5679,11 +5679,11 @@ var $author$project$Main$view = function (model) {
 					[
 						A2(
 						$author$project$Main$summaryCard,
-						'Ingresos',
+						'Income',
 						$author$project$Main$formatMoney(totalIncome)),
 						A2(
 						$author$project$Main$summaryCard,
-						'Gastos',
+						'Expenses',
 						$author$project$Main$formatMoney(totalExpense)),
 						A2(
 						$author$project$Main$summaryCard,
@@ -5698,7 +5698,7 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Entradas')
+						$elm$html$Html$text('Entries')
 					])),
 				$author$project$Main$viewEntries(model.entries)
 			]));
