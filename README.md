@@ -39,12 +39,12 @@ These are the 7 programs and what type of paradigm was used for all of them:
 ### Built With
 
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-663399?style=for-the-badge&logo=css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Elm](https://img.shields.io/badge/Elm-1293D8?style=for-the-badge&logo=elm&logoColor=white)
-![Prolog](https://img.shields.io/badge/Prolog-74283C?style=for-the-badge)
+![Prolog](https://custom-icon-badges.demolab.com/badge/Prolog-74283C?style=for-the-badge&logo=prolog&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 
 Also other additional tools were used for integration like PyScript, TeaVM, Tau Prolog and html2pdf.
@@ -62,7 +62,7 @@ For utilizing the webpage and entering it by command: (NOTE: Python 3 needs to b
 ```bash
 python -m http.server 8000
 ```
-Open `http://localhost:8000` in a browser of your choice
+Open `http://localhost:8000` in a browser of your choice.
 
 There are also avaible extensions that help for viewing webpages like Live Server. 
 
